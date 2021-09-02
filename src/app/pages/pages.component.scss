@@ -1,0 +1,14 @@
+@import "../../scss/color";
+
+.main-section {
+  height: 100%;
+  position: relative;
+
+  .background-section{
+    height: 100%;
+    background-image: url(/assets/texture.png);
+    background-size: 15%;
+    background-repeat: repeat;
+  }
+
+}

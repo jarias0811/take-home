@@ -1,0 +1,106 @@
+<main class="main-section">
+  <div class="background-section content-centered">
+    <div class="container" [@slideInOut]>
+      <div class="row mb-2">
+        <h3><strong>Sign up for email updates</strong></h3>
+      </div>
+      <div class="row mb-3">
+        <p>*Indicates Required Field</p>
+      </div>
+      <form class="form" [formGroup]="formGroup" (ngSubmit)="onSubmit()" aria-label="User subscription form">
+        <div class="row">
+          <div class="col-md-6 row align-items-end">
+            <div *ngIf="formGroup.controls['firstName']?.touched && formGroup.controls['firstName']?.errors" [@fadeInOutAnimation]="'in'">
+              <span class="visually-hidden">Warning: </span>
+              <span *ngIf="formGroup.controls['firstName']?.errors?.required" class="text-danger"><strong><i>First name is required</i></strong></span>
+            </div>
+            <app-common-input
+              [id]="'firstname'"
+              label="FIRST NAME*"
+              [control]="convertToFormControl(formGroup.controls['firstName'])"
+            ></app-common-input>
+          </div>
+          <div class="col-md-6 row align-items-end">
+            <div *ngIf="formGroup.controls['lastName']?.touched && formGroup.controls['lastName']?.errors" [@fadeInOutAnimation]="'in'">
+              <span class="visually-hidden">Warning: </span>
+              <span *ngIf="formGroup.controls['lastName']?.errors?.required" class="text-danger"><strong><i>Last name is required</i></strong></span>
+            </div>
+            <app-common-input
+              [id]="'lastname'"
+              label="LAST NAME*"
+              [control]="convertToFormControl(formGroup.controls['lastName'])"
+            ></app-common-input>
+          </div>
+          <div class="col-md-6 row align-items-end">
+            <div *ngIf="formGroup.controls['email']?.touched && formGroup.controls['email']?.errors" [@fadeInOutAnimation]="'in'">
+              <span class="visually-hidden">Warning: </span>
+              <span *ngIf="formGroup.controls['email']?.errors?.required" class="text-danger"><strong><i>Email address is required</i></strong></span>
+              <span *ngIf="formGroup.controls['email']?.errors?.email" class="text-danger"><strong><i>Wrong email formatting</i></strong></span>
+            </div>
+            <app-common-input
+              [id]="'email-address'"
+              label="EMAIL ADDRESS*"
+              [control]="convertToFormControl(formGroup.controls['email'])"
+            ></app-common-input>
+          </div>
+          <div class="col-md-6 row align-items-end">
+            <app-common-input
+              [id]="'organization'"
+              label="ORGANIZATION"
+              [control]="convertToFormControl(formGroup.controls['org'])"
+            ></app-common-input>
+          </div>
+          <div class="col-md-3 row align-items-end">
+            <div *ngIf="formGroup.controls['euResident']?.touched && formGroup.controls['euResident']?.errors" [@fadeInOutAnimation]="'in'">
+              <span class="visually-hidden">Warning: </span>
+              <span *ngIf="formGroup.controls['euResident']?.errors?.required" class="text-danger"><strong><i>EU resident is required</i></strong></span>
+            </div>
+            <app-common-select
+              [options]="residentOptions"
+              [id]="'eu-resident'"
+              label="EU RESIDENT*"
+              [control]="convertToFormControl(formGroup.controls['euResident'])"
+            ></app-common-select>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div *ngIf="(formGroup.controls['advances']?.touched
+                      || formGroup.controls['alerts']?.touched
+                      || formGroup.controls['other']?.touched)
+                      && formGroup.errors?.atLeastOne" [@fadeInOutAnimation]="'in'">
+            <span class="visually-hidden">Warning: </span>
+            <span class="text-danger"><strong><i>At least one checkbox must be selected</i></strong></span>
+          </div>
+          <div class="col-md-6">
+            <app-common-checkbox
+              [id]="'advances'"
+              label="ADVANCES"
+              [control]="convertToFormControl(formGroup.controls['advances'])"
+            ></app-common-checkbox>
+          </div>
+          <div class="col-md-6">
+            <app-common-checkbox
+              [id]="'alerts'"
+              label="ALERTS"
+              [control]="convertToFormControl(formGroup.controls['alerts'])"
+            ></app-common-checkbox>
+          </div>
+          <div class="col-md-6">
+            <app-common-checkbox
+              [id]="'other'"
+              label="OTHER COMMUNICATIONS"
+              [control]="convertToFormControl(formGroup.controls['other'])"
+            ></app-common-checkbox>
+          </div>
+        </div>
+        <div class="row pt-5">
+          <div class="col-12 d-flex">
+            <button type="submit" class="btn btn-primary btn-lg common-form-btn me-3" [disabled]="!formGroup.valid">SUBMIT</button>
+            <button type="button" class="btn bg-white btn-lg common-form-btn ms-3" (click)="initFormGroup()">RESET</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+

@@ -1,0 +1,73 @@
+@import "src/scss/color";
+
+.checkbox-container {
+  display: block;
+  position: relative;
+  padding-left: 3rem;
+  margin-bottom: 1.2rem;
+  cursor: pointer;
+  font-size: 1.3rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+
+    &:checked {
+      ~ {
+        .checkmark {
+          background-color: $primary;
+          border: none;
+          &:after {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  &:hover {
+    input {
+      ~ {
+        .checkmark {
+          transition: all 0.25s ease;
+          background-color: $primary-opacity-75;
+        }
+      }
+    }
+  }
+
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    width: 2rem;
+    background-color: white;
+    border: $accent-opacity-75 solid 0.15rem;
+
+    &:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    &:after {
+      left: 11px;
+      top: 4px;
+      width: 10px;
+      height: 20px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+  }
+}

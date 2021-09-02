@@ -1,0 +1,12 @@
+<div class="form-group pt-2 pb-2 common-select">
+  <label [htmlFor]="id" class="mb-1">{{label}}</label>
+  <ng-select placeholder="- SELECT ONE -"
+             class="common-select"
+             [searchable]="false"
+             [formControl]="control"
+             [labelForId]="id"
+             [ngClass]="{'is-invalid': control?.touched && control?.errors}"
+  >
+    <ng-option *ngFor="let option of options" [value]="option">{{option}}</ng-option>
+  </ng-select>
+</div>

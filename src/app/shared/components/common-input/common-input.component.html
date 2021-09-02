@@ -1,0 +1,9 @@
+<div class="form-group pt-2 pb-2">
+  <label [htmlFor]="id" class="mb-1">{{label}}</label>
+  <input
+    id="{{id}}"
+    type="text"
+    class="form-control common-input"
+    [ngClass]="{'is-invalid': control?.touched && control?.errors}"
+    [formControl]="control">
+</div>

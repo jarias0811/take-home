@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+@import "scss/all";
+@import "~bootstrap/scss/bootstrap";
+@import '~ngx-toastr/toastr';
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+html, body{
+  height: 100%;
+}
+
+.content-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  &-rounded {
+    border-radius: 1rem;
+  }
+
+  &-shadow {
+    box-shadow: 3px 3px 5px 1px rgba(0, 0, 0, 0.3);
+  }
+}
